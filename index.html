@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keys Vault</title>
+    <meta
+      name="description"
+      content="Private PIN vault for environment keys. Browser-only encryption."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Private vault</p>
+          <h1>Keys</h1>
+        </div>
+        <button id="lock-button" class="secondary hidden" type="button">Lock vault</button>
+      </header>
+
+      <main>
+        <section id="lock-screen" class="panel">
+          <h2>Unlock your vault</h2>
+          <p id="vault-status" class="status-text">
+            No vault exists yet. Create one with a PIN.
+          </p>
+
+          <form id="unlock-form" class="stack">
+            <label class="field">
+              <span>PIN</span>
+              <input
+                id="pin-input"
+                type="password"
+                inputmode="numeric"
+                minlength="4"
+                maxlength="32"
+                placeholder="Enter a PIN"
+                required
+              />
+            </label>
+
+            <button id="unlock-button" class="primary" type="submit">Create vault</button>
+          </form>
+        </section>
+
+        <section id="vault-screen" class="panel hidden">
+          <div class="toolbar">
+            <button id="export-button" class="secondary" type="button">Export CSV</button>
+            <button id="reset-button" class="danger" type="button">Reset vault</button>
+          </div>
+
+          <form id="entry-form" class="stack">
+            <div class="grid">
+              <label class="field">
+                <span>System</span>
+                <input id="system-input" type="text" placeholder="GitHub" required />
+              </label>
+
+              <label class="field">
+                <span>Service</span>
+                <input id="service-input" type="text" placeholder="Production" required />
+              </label>
+            </div>
+
+            <div class="grid">
+              <label class="field">
+                <span>Key name</span>
+                <input id="name-input" type="text" placeholder="API token" required />
+              </label>
+
+              <label class="field">
+                <span>Secret</span>
+                <input id="secret-input" type="text" placeholder="••••••••" required />
+              </label>
+            </div>
+
+            <button class="primary" type="submit">Add key</button>
+          </form>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>System</th>
+                  <th>Service</th>
+                  <th>Name</th>
+                  <th>Secret</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="entries-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
