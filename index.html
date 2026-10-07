@@ -47,6 +47,10 @@
 
         <section id="vault-screen" class="panel hidden">
           <div class="toolbar">
+            <input id="search-input" class="search-input" type="search" placeholder="Search keys…" aria-label="Search keys" />
+            <button id="backup-button" class="secondary" type="button">Encrypted backup</button>
+            <button id="restore-button" class="secondary" type="button">Restore backup</button>
+            <input id="restore-input" class="hidden" type="file" accept="application/json,.json" />
             <button id="export-button" class="secondary" type="button">Export CSV</button>
             <button id="reset-button" class="danger" type="button">Reset vault</button>
           </div>
@@ -72,11 +76,14 @@
 
               <label class="field">
                 <span>Secret</span>
-                <input id="secret-input" type="text" placeholder="••••••••" required />
+                <input id="secret-input" type="password" autocomplete="off" placeholder="••••••••" required />
               </label>
             </div>
 
-            <button class="primary" type="submit">Add key</button>
+            <div class="form-actions">
+              <button id="save-entry-button" class="primary" type="submit">Add key</button>
+              <button id="cancel-edit-button" class="secondary hidden" type="button">Cancel edit</button>
+            </div>
           </form>
 
           <div class="table-wrap">
