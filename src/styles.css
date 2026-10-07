@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --color-bg: #0c0d0f;
+  --color-surface: #151618;
+  --color-surface-2: #1c1d21;
+  --color-fg: #f3f3f4;
+  --color-muted: #a1a1aa;
+  --color-subtle: #71717a;
+  --color-line: #2c2d33;
+  --color-accent: #e7e8ea;
+  --color-accent-fg: #121316;
+  --color-danger: #d46a6a;
+
+  --radius-card: 1.75rem;
+  --radius-control: 0.5rem;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.copy-slot {
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(2px);
+}
+
+.secret-line:hover .copy-slot,
+.secret-line:focus-within .copy-slot,
+.secret-line[data-copying="true"] .copy-slot {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.group-card {
+  animation: group-rise 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes group-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-slot,
+  .group-card {
+    transition: none;
+    transform: none;
+    animation: none;
+  }
+}
