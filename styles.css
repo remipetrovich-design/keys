@@ -230,3 +230,24 @@ tbody tr:hover {
     flex-direction: column;
   }
 }
+
+
+.status-text.error { color: #fca5a5; }
+.form-actions { display: flex; gap: 10px; }
+.search-input {
+  min-width: 220px; flex: 1; background: rgba(17,24,39,.8); color: var(--text);
+  border: 1px solid var(--line); border-radius: 10px; padding: 11px 14px; outline: none;
+}
+.search-input:focus { border-color: rgba(96,165,250,.8); box-shadow: 0 0 0 3px rgba(96,165,250,.12); }
+.row-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.mini-btn {
+  background: rgba(148,163,184,.08); color: var(--text); border: 1px solid var(--line);
+  padding: 7px 9px; font-size: .82rem;
+}
+.secret-value { display: inline-block; min-width: 92px; }
+button:disabled { opacity: .55; cursor: wait; transform: none; }
+@media (max-width: 640px) {
+  .toolbar { justify-content: stretch; }
+  .toolbar > button, .search-input { width: 100%; min-width: 0; }
+  .form-actions { flex-direction: column; }
+}
